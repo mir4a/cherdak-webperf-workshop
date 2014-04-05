@@ -1,8 +1,8 @@
 module.exports = function (grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		js_files: ['public/javascripts/*.js'],
-		css_files: ['public/styles/*.js'],
+		js_files: ['public/javascripts/app.js', 'public/javascripts/script.js', 'public/javascripts/script2.js'],
+		css_files: ['public/styles/bootstrap.css', 'public/styles/style.css', 'public/styles/style2.css', 'public/styles/style3.css'],
 		html_files: ['public/*.html'],
 		phantomas: {
 			perf : {
@@ -21,10 +21,12 @@ module.exports = function (grunt) {
 			},
 
 			styles: {
+				src: ['<%= css_files %>'],
+				dest: 'public/styles/styles.concat.css',
 				//here you should concatenate styles
 			}
 		},
-		
+
 		uglify: {
 			js: {
 				files: {
@@ -35,9 +37,9 @@ module.exports = function (grunt) {
 
 		cssmin: {
 			minify: {
-				// src: [''],
-				// dest: 'public/styles/',
-				// ext: '.min.css'
+				src: ['public/styles/styles.concat.css'],
+				dest: 'public/styles/',
+				ext: 'public/styles/styles.min.css'
 			}
 		},
 
@@ -48,7 +50,7 @@ module.exports = function (grunt) {
 					collapseWhitespace: true
 				},
 				files: {
-					// 'public/index.min.html': []
+					'public/index.min.html':'public/index.html'
 				}
 			}
 		}
