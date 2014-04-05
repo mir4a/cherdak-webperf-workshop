@@ -1,12 +1,15 @@
 .image{
+	font-size: 0;
 	height: 300px;
-	border: 2px solid gray;
-	float: left;
+	display: inline-block;
 	margin: 10px;
 }
 
-.image:hover{
-	height: 320px;
+.image > img {
+	border: 2px solid gray;
+}
+
+.image:hover > img{
 	-webkit-transform: rotate(45deg);
 	-webkit-transition: 2s;
 	-moz-transition: 2s;
@@ -16,9 +19,4 @@
 
 .image img{
 	height: 100%;
-}
-
-.row{
-	clear: both;
-	overflow: hidden;
 }
