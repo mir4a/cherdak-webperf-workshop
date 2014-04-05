@@ -4,8 +4,6 @@ var app = express();
 var staticPath = __dirname + '/public';
 
 app.use(optimus(staticPath));
-// app.use(connect.static(staticPath));
-
 app.use(express.static(staticPath));
 
 app.listen(9999);
