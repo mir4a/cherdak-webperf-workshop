@@ -2,14 +2,14 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		js_files: ['public/javascripts/app.js', 'public/javascripts/script.js', 'public/javascripts/script2.js'],
-		css_files: ['public/styles/bootstrap.css', 'public/styles/style.css', 'public/styles/style2.css', 'public/styles/style3.css'],
+		css_files: ['public/styles/style.css', 'public/styles/style2.css', 'public/styles/style3.css'],
 		html_files: ['public/*.html'],
 		phantomas: {
 			perf : {
 				options : {
 					indexPath : './phantomas/',
 					options   : {},
-					url: 'http://localhost:9999/',
+					url: 'http://localhost:9999/'
 				}
 			}
 		},
@@ -17,7 +17,7 @@ module.exports = function (grunt) {
 		concat: {
 			js: {
 				src: ['<%= js_files %>'],
-				dest: 'public/javascripts/app.concat.js',
+				dest: 'public/javascripts/app.concat.js'
 			},
 
 			styles: {
@@ -36,11 +36,7 @@ module.exports = function (grunt) {
 		},
 
 		cssmin: {
-			minify: {
-				src: ['public/styles/styles.concat.css'],
-				dest: 'public/styles/',
-				ext: 'public/styles/styles.min.css'
-			}
+			'public/styles/styles.min.css': 'public/styles/styles.concat.css'
 		},
 
 		htmlmin: {
@@ -64,5 +60,5 @@ module.exports = function (grunt) {
 
 	grunt.loadNpmTasks('grunt-phantomas');
 
-	grunt.registerTask('default', ['concat', 'uglify', 'phantomas']);
+	grunt.registerTask('default', ['concat', 'cssmin', 'htmlmin', 'phantomas']);
 };
